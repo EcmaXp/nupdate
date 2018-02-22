@@ -1,0 +1,4 @@
+requests
+progressbar2
+mojang-api
+paramiko
