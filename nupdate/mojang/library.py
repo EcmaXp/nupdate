@@ -1,3 +1,4 @@
+import platform
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -110,7 +111,11 @@ class MojangLibrary(Namespace):
             if classifiers is None:
                 raise Exception
 
-            return classifiers[natives.get(OS_NAME)]
+            arch = {'i386': '32', 'AMD64': '64'}.get(platform.machine())
+            if not arch:
+                raise NotImplementedError(f"platform.machine() => {platform.machine()!r} (only i386 and AMD64 supported)")
+
+            return classifiers[natives.get(OS_NAME).replace("${arch}", arch)]
 
         return None
 

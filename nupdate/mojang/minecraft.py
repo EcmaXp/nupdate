@@ -25,13 +25,13 @@ class MojangMinecraftJson(Namespace):
         obj = self.copy()
         for key, value in other.items():
             if key == "libraries":
-                everything = set(library.id for library in self.libraries)
                 libraries = []
 
-                for library in obj.libraries:
+                for library in other.libraries:
                     libraries.append(dict(library))
 
-                for library in other.libraries:
+                everything = set(library.id for library in other.libraries)
+                for library in obj.libraries:
                     if library.id not in everything:
                         libraries.append(dict(library))
 

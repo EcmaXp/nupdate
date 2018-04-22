@@ -58,7 +58,7 @@ sftp.put(pyz_path, "/home/signet/.nupdate.pyz")
 # noinspection PyTypeChecker
 sftp.put(launcher_path, "/home/signet/web/launcher.zip")
 
-stdin, stdout, stderr = client.exec_command("/home/signet/mint/update-mint.sh")
+stdin, stdout, stderr = client.exec_command("/home/signet/instance/etp/update-etp.sh")
 for line in stderr:
     print(line, end='')
 

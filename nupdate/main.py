@@ -367,11 +367,16 @@ def launch():
         'auth_access_token': auth_access_token,
         'auth_player_name': auth_player_name,
         'user_type': 'mojang',
+        'user_properties': {},
     }
 
     arguments = mc['minecraftArguments']
     for key, value in options.items():
         arguments = arguments.replace("${" + key + "}", str(value))
+
+    if "$" in arguments:
+        log("E: untranslated argument ($ exists)", file=sys.stderr)
+        log(f"E: argument = {arguments!r}", file=sys.stderr)
 
     classpath = []
 

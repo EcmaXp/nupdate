@@ -255,9 +255,9 @@ def build_pyz():
 
 
 def build_mcjson():
-    url = "https://mc.nyang.kr/packages/mint/libraries/"
+    url = "https://mc.nyang.kr/packages/event/libraries/"
     assert url.endswith("/")
-    mc_json = minecraft_build("1.12.2", "forge1.12.2-14.23.1.2608", Path("."), lambda x: url + x.as_posix())
+    mc_json = minecraft_build("1.7.10", "Forge10.13.4.1614-1.7.10", Path("."), lambda x: url + x.as_posix())
     pprint(dict(mc_json))
     content = render_json(mc_json)
     (Path.cwd() / "minecraft.json").write_bytes(content)
